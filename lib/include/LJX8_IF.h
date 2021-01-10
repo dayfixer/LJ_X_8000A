@@ -13,157 +13,172 @@
 #endif
 
 /// Setting value storage level designation
-typedef enum {
-	LJX8IF_SETTING_DEPTH_WRITE		= 0x00,		// 设置书写区域 Write settings area
-	LJX8IF_SETTING_DEPTH_RUNNING	= 0x01,		// 运行中设定区域 Running settings area
-	LJX8IF_SETTING_DEPTH_SAVE		= 0x02,		// 保存区域 Save area
+typedef enum
+{
+	LJX8IF_SETTING_DEPTH_WRITE = 0x00,	 // 设置书写区域 Write settings area
+	LJX8IF_SETTING_DEPTH_RUNNING = 0x01, // 运行中设定区域 Running settings area
+	LJX8IF_SETTING_DEPTH_SAVE = 0x02,	 // 保存区域 Save area
 } LJX8IF_SETTING_DEPTH;
 
 /// Initialization target setting item designation
-typedef enum {
-	LJX8IF_INIT_SETTING_TARGET_PRG0		= 0x00,		// Program 0
-	LJX8IF_INIT_SETTING_TARGET_PRG1		= 0x01,		// Program 1
-	LJX8IF_INIT_SETTING_TARGET_PRG2		= 0x02,		// Program 2
-	LJX8IF_INIT_SETTING_TARGET_PRG3		= 0x03,		// Program 3
-	LJX8IF_INIT_SETTING_TARGET_PRG4		= 0x04,		// Program 4
-	LJX8IF_INIT_SETTING_TARGET_PRG5		= 0x05,		// Program 5
-	LJX8IF_INIT_SETTING_TARGET_PRG6		= 0x06,		// Program 6
-	LJX8IF_INIT_SETTING_TARGET_PRG7		= 0x07,		// Program 7
-	LJX8IF_INIT_SETTING_TARGET_PRG8		= 0x08,		// Program 8
-	LJX8IF_INIT_SETTING_TARGET_PRG9		= 0x09,		// Program 9
-	LJX8IF_INIT_SETTING_TARGET_PRG10	= 0x0A,		// Program 10
-	LJX8IF_INIT_SETTING_TARGET_PRG11	= 0x0B,		// Program 11
-	LJX8IF_INIT_SETTING_TARGET_PRG12	= 0x0C,		// Program 12
-	LJX8IF_INIT_SETTING_TARGET_PRG13	= 0x0D,		// Program 13
-	LJX8IF_INIT_SETTING_TARGET_PRG14	= 0x0E,		// Program 14
-	LJX8IF_INIT_SETTING_TARGET_PRG15	= 0x0F,		// Program 15
+typedef enum
+{
+	LJX8IF_INIT_SETTING_TARGET_PRG0 = 0x00,	 // Program 0
+	LJX8IF_INIT_SETTING_TARGET_PRG1 = 0x01,	 // Program 1
+	LJX8IF_INIT_SETTING_TARGET_PRG2 = 0x02,	 // Program 2
+	LJX8IF_INIT_SETTING_TARGET_PRG3 = 0x03,	 // Program 3
+	LJX8IF_INIT_SETTING_TARGET_PRG4 = 0x04,	 // Program 4
+	LJX8IF_INIT_SETTING_TARGET_PRG5 = 0x05,	 // Program 5
+	LJX8IF_INIT_SETTING_TARGET_PRG6 = 0x06,	 // Program 6
+	LJX8IF_INIT_SETTING_TARGET_PRG7 = 0x07,	 // Program 7
+	LJX8IF_INIT_SETTING_TARGET_PRG8 = 0x08,	 // Program 8
+	LJX8IF_INIT_SETTING_TARGET_PRG9 = 0x09,	 // Program 9
+	LJX8IF_INIT_SETTING_TARGET_PRG10 = 0x0A, // Program 10
+	LJX8IF_INIT_SETTING_TARGET_PRG11 = 0x0B, // Program 11
+	LJX8IF_INIT_SETTING_TARGET_PRG12 = 0x0C, // Program 12
+	LJX8IF_INIT_SETTING_TARGET_PRG13 = 0x0D, // Program 13
+	LJX8IF_INIT_SETTING_TARGET_PRG14 = 0x0E, // Program 14
+	LJX8IF_INIT_SETTING_TARGET_PRG15 = 0x0F, // Program 15
 } LJX8IF_INIT_SETTING_TARGET;
 
 /// Get profile target buffer designation
-typedef enum {
-	LJX8IF_PROFILE_BANK_ACTIVE		= 0x00,		// 激活表面 Active surface
-	LJX8IF_PROFILE_BANK_INACTIVE	= 0x01,		// 非活动表面 Inactive surface
+typedef enum
+{
+	LJX8IF_PROFILE_BANK_ACTIVE = 0x00,	 // 激活表面 Active surface
+	LJX8IF_PROFILE_BANK_INACTIVE = 0x01, // 非活动表面 Inactive surface
 } LJX8IF_PROFILE_BANK;
 
 /// Get profile position specification method designation (batch measurement: off)
-typedef enum {
-	LJX8IF_PROFILE_POSITION_CURRENT	= 0x00,		// From current
-	LJX8IF_PROFILE_POSITION_OLDEST	= 0x01,		// From oldest
-	LJX8IF_PROFILE_POSITION_SPEC	= 0x02,		// Specify position
+typedef enum
+{
+	LJX8IF_PROFILE_POSITION_CURRENT = 0x00, // From current
+	LJX8IF_PROFILE_POSITION_OLDEST = 0x01,	// From oldest
+	LJX8IF_PROFILE_POSITION_SPEC = 0x02,	// Specify position
 } LJX8IF_PROFILE_POSITION;
 
 /// Get profile batch data position specification method designation (batch measurement: on)
-typedef enum {
-	LJX8IF_BATCH_POSITION_CURRENT		= 0x00,		// From current
-	LJX8IF_BATCH_POSITION_SPEC			= 0x02,		// Specify position
-	LJX8IF_BATCH_POSITION_COMMITED		= 0x03,		// From current after batch commitment
-	LJX8IF_BATCH_POSITION_CURRENT_ONLY	= 0x04,		// Current only
+typedef enum
+{
+	LJX8IF_BATCH_POSITION_CURRENT = 0x00,	   // From current
+	LJX8IF_BATCH_POSITION_SPEC = 0x02,		   // Specify position
+	LJX8IF_BATCH_POSITION_COMMITED = 0x03,	   // From current after batch commitment
+	LJX8IF_BATCH_POSITION_CURRENT_ONLY = 0x04, // Current only
 } LJX8IF_BATCH_POSITION;
 
 /// Version info structure
-typedef struct {
-	INT	nMajorNumber;		// 主号 Major number
-	INT	nMinorNumber;		// 副号 Minor number
-	INT	nRevisionNumber;	// 修订号 Revision number
-	INT	nBuildNumber;		// 内部修订号 Buiid number
+typedef struct
+{
+	INT nMajorNumber;	 // 主号 Major number
+	INT nMinorNumber;	 // 副号 Minor number
+	INT nRevisionNumber; // 修订号 Revision number
+	INT nBuildNumber;	 // 内部修订号 Buiid number
 } LJX8IF_VERSION_INFO;
 
 /// Ethernet settings structure
-typedef struct {
-	BYTE	abyIpAddress[4];	// 要连接的控制器的IP地址.
-	WORD	wPortNo;			// 要连接的控制器的端口号
-	BYTE	reserve[2];			// Reserved
+typedef struct
+{
+	BYTE abyIpAddress[4]; // 要连接的控制器的IP地址.
+	WORD wPortNo;		  // 要连接的控制器的端口号
+	BYTE reserve[2];	  // Reserved
 } LJX8IF_ETHERNET_CONFIG;
 
 /// Setting item designation structure
-typedef struct {
-	BYTE	byType;			// Setting type
-	BYTE	byCategory;		// Category
-	BYTE	byItem;			// Setting item
-	BYTE	reserve;		// Reserved
-	BYTE	byTarget1;		// Setting Target 1
-	BYTE	byTarget2;		// Setting Target 2
-	BYTE	byTarget3;		// Setting Target 3
-	BYTE	byTarget4;		// Setting Target 4
+typedef struct
+{
+	BYTE byType;	 // Setting type
+	BYTE byCategory; // Category
+	BYTE byItem;	 // Setting item
+	BYTE reserve;	 // Reserved
+	BYTE byTarget1;	 // Setting Target 1
+	BYTE byTarget2;	 // Setting Target 2
+	BYTE byTarget3;	 // Setting Target 3
+	BYTE byTarget4;	 // Setting Target 4
 } LJX8IF_TARGET_SETTING;
 
 /// Profile information
-typedef struct {
-	BYTE	byProfileCount;		// 存储的轮廓总数 The amount of profile data stored
-	BYTE	reserve1;			// Reserved
-	BYTE	byLuminanceOutput;	// 亮度输出是否打开 Whether luminance output is on.
-	BYTE	reserve2;			// Reserved
-	WORD	wProfileDataCount;	// 轮廓数 Profile data count
-	BYTE	reserve3[2];		// Reserved
-	LONG	lXStart;			// 第一个点的X坐标 1st point X coordinate.
-	LONG	lXPitch;			// 轮廓数据X方向间隔 Profile data X direction interval.
+typedef struct
+{
+	BYTE byProfileCount;	// 存储的轮廓总数 The amount of profile data stored
+	BYTE reserve1;			// Reserved
+	BYTE byLuminanceOutput; // 亮度输出是否打开 Whether luminance output is on.
+	BYTE reserve2;			// Reserved
+	WORD wProfileDataCount; // 轮廓数 Profile data count
+	BYTE reserve3[2];		// Reserved
+	LONG lXStart;			// 第一个点的X坐标 1st point X coordinate.
+	LONG lXPitch;			// 轮廓数据X方向间隔 Profile data X direction interval.
 } LJX8IF_PROFILE_INFO;
 
 /// Profile header information structure
-typedef struct {
-	DWORD	reserve;		// Reserved
-	DWORD	dwTriggerCount;	// The trigger count when the trigger was issued.
-	LONG	lEncoderCount;	// The encoder count when the trigger was issued.
-	DWORD	reserve2[3];	// Reserved
+typedef struct
+{
+	DWORD reserve;		  // Reserved
+	DWORD dwTriggerCount; // The trigger count when the trigger was issued.
+	LONG lEncoderCount;	  // The encoder count when the trigger was issued.
+	DWORD reserve2[3];	  // Reserved
 } LJX8IF_PROFILE_HEADER;
 
 /// Profile footer information structure
-typedef struct {
-	DWORD	reserve;	// Reserved
+typedef struct
+{
+	DWORD reserve; // Reserved
 } LJX8IF_PROFILE_FOOTER;
 
 /// Get profile request structure (batch measurement: off)
-typedef struct {
-	BYTE	byTargetBank;		// 读取目标表面 The target surface to read.
-	BYTE	byPositionMode;		// 获取轮廓位置指定方法 The get profile position specification method.
-	BYTE	reserve[2];			// 预留位置 Reserved
-	DWORD	dwGetProfileNo;		// 从轮廓中将要获得的轮廓数 The profile number for the profile to get.
-	BYTE	byGetProfileCount;	// 要读取的轮廓数量 The number of profiles to read.
-	BYTE	byErase;			// 擦除从控制器读取的轮廓 Erase the profiles that were read from the controller.
-	BYTE	reserve2[2];		// Reserved
+typedef struct
+{
+	BYTE byTargetBank;		// 读取目标表面 The target surface to read.
+	BYTE byPositionMode;	// 获取轮廓位置指定方法 The get profile position specification method.
+	BYTE reserve[2];		// 预留位置 Reserved
+	DWORD dwGetProfileNo;	// 从轮廓中将要获得的轮廓数 The profile number for the profile to get.
+	BYTE byGetProfileCount; // 要读取的轮廓数量 The number of profiles to read.
+	BYTE byErase;			// 擦除从控制器读取的轮廓 Erase the profiles that were read from the controller.
+	BYTE reserve2[2];		// Reserved
 } LJX8IF_GET_PROFILE_REQUEST;
 
 /// Get profile request structure (batch measurement: on)
-typedef struct {
-	BYTE	byTargetBank;		// The target surface to read.
-	BYTE	byPositionMode;		// The get profile position specification method
-	BYTE	reserve[2];			// Reserved
-	DWORD	dwGetBatchNo;		// The batch number for the profile to get
-	DWORD	dwGetProfileNo;		// The profile number to start getting profiles from in the specified batch number.
-	BYTE	byGetProfileCount;	// The number of profiles to read.
-	BYTE	byErase;			// Erase the profiles that were read from the controller.
-	BYTE	reserve2[2];		// Reserved
+typedef struct
+{
+	BYTE byTargetBank;		// The target surface to read.
+	BYTE byPositionMode;	// The get profile position specification method
+	BYTE reserve[2];		// Reserved
+	DWORD dwGetBatchNo;		// The batch number for the profile to get
+	DWORD dwGetProfileNo;	// The profile number to start getting profiles from in the specified batch number.
+	BYTE byGetProfileCount; // The number of profiles to read.
+	BYTE byErase;			// Erase the profiles that were read from the controller.
+	BYTE reserve2[2];		// Reserved
 } LJX8IF_GET_BATCH_PROFILE_REQUEST;
 
 /// Get profile response structure (batch measurement: off)
-typedef struct {
-	DWORD	dwCurrentProfileNo;		// 当前时间点的个人轮廓编号.
-	DWORD	dwOldestProfileNo;		// 控制器保存的最旧配置文件的配置文件编号.
-	DWORD	dwGetTopProfileNo;		// 这次读取的资料中最早的资料的资料编号.
-	BYTE	byGetProfileCount;		// 这次读取的轮廓数.	
-	BYTE	reserve[3];				// 预保留 Reserved
+typedef struct
+{
+	DWORD dwCurrentProfileNo; // 当前时间点的个人轮廓编号.
+	DWORD dwOldestProfileNo;  // 控制器保存的最旧配置文件的配置文件编号.
+	DWORD dwGetTopProfileNo;  // 这次读取的资料中最早的资料的资料编号.
+	BYTE byGetProfileCount;	  // 这次读取的轮廓数.
+	BYTE reserve[3];		  // 预保留 Reserved
 } LJX8IF_GET_PROFILE_RESPONSE;
 
 /// Get profile response structure (batch measurement: on)
-typedef struct {
-	DWORD	dwCurrentBatchNo;			// The batch number at the current point in time.
-	DWORD	dwCurrentBatchProfileCount;	// The number of profiles in the newest batch.
-	DWORD	dwOldestBatchNo;			// The batch number for the oldest batch held by the controller.
-	DWORD	dwOldestBatchProfileCount;	// The number of profiles in the oldest batch held by the controller.
-	DWORD	dwGetBatchNo;				// The batch number that was read this time.
-	DWORD	dwGetBatchProfileCount;		// The number of profiles in the batch that was read this time.
-	DWORD	dwGetBatchTopProfileNo;		// The oldest profile number in the batch out of the profiles that were read this time.
-	BYTE	byGetProfileCount;			// The number of profiles that were read this time.
-	BYTE	byCurrentBatchCommited;		// The batch measurements for the newest batch number has finished.
-	BYTE	reserve[2];					// Reserved
+typedef struct
+{
+	DWORD dwCurrentBatchNo;			  // The batch number at the current point in time.
+	DWORD dwCurrentBatchProfileCount; // The number of profiles in the newest batch.
+	DWORD dwOldestBatchNo;			  // The batch number for the oldest batch held by the controller.
+	DWORD dwOldestBatchProfileCount;  // The number of profiles in the oldest batch held by the controller.
+	DWORD dwGetBatchNo;				  // The batch number that was read this time.
+	DWORD dwGetBatchProfileCount;	  // The number of profiles in the batch that was read this time.
+	DWORD dwGetBatchTopProfileNo;	  // The oldest profile number in the batch out of the profiles that were read this time.
+	BYTE byGetProfileCount;			  // The number of profiles that were read this time.
+	BYTE byCurrentBatchCommited;	  // The batch measurements for the newest batch number has finished.
+	BYTE reserve[2];				  // Reserved
 } LJX8IF_GET_BATCH_PROFILE_RESPONSE;
 
 /// High-speed communication prep start request structure
-typedef struct {
-	BYTE	bySendPosition;			// 发送开始位置 Send start position
-	BYTE	reserve[3];				// Reserved
+typedef struct
+{
+	BYTE bySendPosition; // 发送开始位置 Send start position
+	BYTE reserve[3];	 // Reserved
 } LJX8IF_HIGH_SPEED_PRE_START_REQ;
-
 
 /**
 Callback function interface for high-speed data communication
@@ -173,7 +188,7 @@ Callback function interface for high-speed data communication
 @param	dwNotify	Notification of an interruption in high-speed communication or a break in batch measurements.
 @param	dwUser		User information
 */
-typedef void(_cdecl *LJX8IF_CALLBACK)(BYTE* pBuffer, DWORD dwSize, DWORD dwCount, DWORD dwNotify, DWORD dwUser);
+typedef void(_cdecl *LJX8IF_CALLBACK)(BYTE *pBuffer, DWORD dwSize, DWORD dwCount, DWORD dwNotify, DWORD dwUser);
 
 /**
 Callback function interface for high-speed data communication
@@ -186,9 +201,7 @@ Callback function interface for high-speed data communication
 @param	dwNotify	Notification of an interruption in high-speed communication or a break in batch measurements.
 @param	dwUser		User information
 */
-typedef void(_cdecl *LJX8IF_CALLBACK_SIMPLE_ARRAY)(LJX8IF_PROFILE_HEADER* pProfileHeaderArray, WORD* pHeightProfileArray, WORD* pLuminanceProfileArray, DWORD dwLuminanceEnable, DWORD dwProfileDataCount, DWORD dwCount, DWORD dwNotify, DWORD dwUser);
-
-
+typedef void(_cdecl *LJX8IF_CALLBACK_SIMPLE_ARRAY)(LJX8IF_PROFILE_HEADER *pProfileHeaderArray, WORD *pHeightProfileArray, WORD *pLuminanceProfileArray, DWORD dwLuminanceEnable, DWORD dwProfileDataCount, DWORD dwCount, DWORD dwNotify, DWORD dwUser);
 
 extern "C"
 {
@@ -218,15 +231,14 @@ extern "C"
 	@param pEthernetConfig以太网通讯设置
 	@return返回码
 	*/
-	LJX8_IF_API LONG WINAPI LJX8IF_EthernetOpen(LONG lDeviceId, LJX8IF_ETHERNET_CONFIG* pEthernetConfig);
-	
+	LJX8_IF_API LONG WINAPI LJX8IF_EthernetOpen(LONG lDeviceId, LJX8IF_ETHERNET_CONFIG *pEthernetConfig);
+
 	/**
 	Disconnect communication path
 	@param	lDeviceId	The communication device to communicate with.
 	@return	Return code
 	*/
 	LJX8_IF_API LONG WINAPI LJX8IF_CommunicationClose(LONG lDeviceId);
-
 
 	// System control
 	/**
@@ -265,7 +277,7 @@ extern "C"
 	@param	pwErrCode		The buffer to receive the system error information.
 	@return	Return code
 	*/
-	LJX8_IF_API LONG WINAPI LJX8IF_GetError(LONG lDeviceId, BYTE byReceivedMax, BYTE* pbyErrCount, WORD* pwErrCode);
+	LJX8_IF_API LONG WINAPI LJX8IF_GetError(LONG lDeviceId, BYTE byReceivedMax, BYTE *pbyErrCount, WORD *pwErrCode);
 
 	/**
 	Clear system error
@@ -289,7 +301,7 @@ extern "C"
 	@param plEncoderCount接收编码器脉冲计数的缓冲区
 	@return返回码
 	*/
-	LJX8_IF_API LONG WINAPI LJX8IF_GetTriggerAndPulseCount(LONG lDeviceId, DWORD* pdwTriggerCount, LONG* plEncoderCount);
+	LJX8_IF_API LONG WINAPI LJX8IF_GetTriggerAndPulseCount(LONG lDeviceId, DWORD *pdwTriggerCount, LONG *plEncoderCount);
 
 	/**
 	Get head temperature
@@ -299,7 +311,7 @@ extern "C"
 	@param	pnCaseTemperature		The buffer to receive case Temperature.
 	@return	Return code
 	*/
-	LJX8_IF_API LONG WINAPI LJX8IF_GetHeadTemperature(LONG lDeviceId, SHORT* pnSensorTemperature, SHORT* pnProcessorTemperature, SHORT* pnCaseTemperature);
+	LJX8_IF_API LONG WINAPI LJX8IF_GetHeadTemperature(LONG lDeviceId, SHORT *pnSensorTemperature, SHORT *pnProcessorTemperature, SHORT *pnCaseTemperature);
 
 	/**
 	Get serial Number
@@ -308,7 +320,7 @@ extern "C"
 	@param	pHeadSerialNo		The buffer to receive serial number of the head
 	@return	Return code
 	*/
-	LJX8_IF_API LONG WINAPI LJX8IF_GetSerialNumber(LONG lDeviceId, CHAR* pControllerSerialNo, CHAR* pHeadSerialNo);
+	LJX8_IF_API LONG WINAPI LJX8IF_GetSerialNumber(LONG lDeviceId, CHAR *pControllerSerialNo, CHAR *pHeadSerialNo);
 
 	/**
 	Get current attention status value
@@ -317,8 +329,7 @@ extern "C"
 	@param	pwAttentionStatus	The buffer to receive attention status
 	@return	Return code
 	*/
-	LJX8_IF_API LONG WINAPI LJX8IF_GetAttentionStatus(LONG lDeviceId, WORD* pwAttentionStatus);
-
+	LJX8_IF_API LONG WINAPI LJX8IF_GetAttentionStatus(LONG lDeviceId, WORD *pwAttentionStatus);
 
 	// Measurement control
 	/**
@@ -360,7 +371,6 @@ extern "C"
 	*/
 	LJX8_IF_API LONG WINAPI LJX8IF_ClearMemory(LONG lDeviceId);
 
-
 	// 与修改或读取设置有关的功能
 	/**
 	发送设置
@@ -372,7 +382,7 @@ extern "C"
 	@param pdwError详细设置错误
 	@return返回码
 	*/
-	LJX8_IF_API LONG WINAPI LJX8IF_SetSetting(LONG lDeviceId, BYTE byDepth, LJX8IF_TARGET_SETTING TargetSetting, void* pData, DWORD dwDataSize, DWORD* pdwError);
+	LJX8_IF_API LONG WINAPI LJX8IF_SetSetting(LONG lDeviceId, BYTE byDepth, LJX8IF_TARGET_SETTING TargetSetting, void *pData, DWORD dwDataSize, DWORD *pdwError);
 
 	/**
 	Get setting
@@ -383,7 +393,7 @@ extern "C"
 	@param	dwDataSize		The size of the buffer to receive the acquired data in BYTEs.
 	@return	Return code
 	*/
-	LJX8_IF_API LONG WINAPI LJX8IF_GetSetting(LONG lDeviceId, BYTE byDepth, LJX8IF_TARGET_SETTING TargetSetting, void* pData, DWORD dwDataSize);
+	LJX8_IF_API LONG WINAPI LJX8IF_GetSetting(LONG lDeviceId, BYTE byDepth, LJX8IF_TARGET_SETTING TargetSetting, void *pData, DWORD dwDataSize);
 
 	/**
 	Initialize setting
@@ -401,7 +411,7 @@ extern "C"
 	@param	pdwError	Detailed setting error
 	@return	Return code
 	*/
-	LJX8_IF_API LONG WINAPI LJX8IF_ReflectSetting(LONG lDeviceId, BYTE byDepth, DWORD* pdwError);
+	LJX8_IF_API LONG WINAPI LJX8IF_ReflectSetting(LONG lDeviceId, BYTE byDepth, DWORD *pdwError);
 
 	/**
 	Update write settings area
@@ -425,7 +435,7 @@ extern "C"
 	使用 LJX8IF_InitializeSetting 函数/ LJX8IF_ReflectSetting 函数设置值的存储区域
 	如果指示此功能保存，则使用此功能完成对保存区域的访问。 确认后请关闭电源。
 	*/
-	LJX8_IF_API LONG WINAPI LJX8IF_CheckMemoryAccess(LONG lDeviceId, BYTE* pbyBusy);
+	LJX8_IF_API LONG WINAPI LJX8IF_CheckMemoryAccess(LONG lDeviceId, BYTE *pbyBusy);
 
 	/**
 	Change program
@@ -444,8 +454,7 @@ extern "C"
 	@param	pbyProgramNo	The buffer to receive the active program number.
 	@return	Return code
 	*/
-	LJX8_IF_API LONG WINAPI LJX8IF_GetActiveProgram(LONG lDeviceId, BYTE* pbyProgramNo);
-
+	LJX8_IF_API LONG WINAPI LJX8IF_GetActiveProgram(LONG lDeviceId, BYTE *pbyProgramNo);
 
 	// 获取测量结果
 	/**
@@ -459,7 +468,7 @@ extern "C"
 	@param dwDataSize pdwProfileData字节大小
 	@return 返回码
 	*/
-	LJX8_IF_API LONG WINAPI LJX8IF_GetProfile(LONG lDeviceId, LJX8IF_GET_PROFILE_REQUEST* pReq, LJX8IF_GET_PROFILE_RESPONSE* pRsp, LJX8IF_PROFILE_INFO* pProfileInfo, DWORD* pdwProfileData, DWORD dwDataSize);
+	LJX8_IF_API LONG WINAPI LJX8IF_GetProfile(LONG lDeviceId, LJX8IF_GET_PROFILE_REQUEST *pReq, LJX8IF_GET_PROFILE_RESPONSE *pRsp, LJX8IF_PROFILE_INFO *pProfileInfo, DWORD *pdwProfileData, DWORD dwDataSize);
 
 	/**
 	Get batch profiles
@@ -472,7 +481,7 @@ extern "C"
 	@param	dwDataSize		pdwProfileData size in BYTEs
 	@return	Return code
 	*/
-	LJX8_IF_API LONG WINAPI LJX8IF_GetBatchProfile(LONG lDeviceId, LJX8IF_GET_BATCH_PROFILE_REQUEST* pReq, LJX8IF_GET_BATCH_PROFILE_RESPONSE* pRsp, LJX8IF_PROFILE_INFO * pProfileInfo, DWORD* pdwBatchData, DWORD dwDataSize);
+	LJX8_IF_API LONG WINAPI LJX8IF_GetBatchProfile(LONG lDeviceId, LJX8IF_GET_BATCH_PROFILE_REQUEST *pReq, LJX8IF_GET_BATCH_PROFILE_RESPONSE *pRsp, LJX8IF_PROFILE_INFO *pProfileInfo, DWORD *pdwBatchData, DWORD dwDataSize);
 
 	/**
 	Get batch profiles by simple array format
@@ -486,7 +495,7 @@ extern "C"
 	@param  pLuminanceProfileArray	The buffer to get array of luminance profile data.
 	@return	Return code
 	*/
-	LJX8_IF_API LONG WINAPI LJX8IF_GetBatchSimpleArray(LONG lDeviceId, LJX8IF_GET_BATCH_PROFILE_REQUEST* pReq, LJX8IF_GET_BATCH_PROFILE_RESPONSE* pRsp, LJX8IF_PROFILE_INFO* pProfileInfo, LJX8IF_PROFILE_HEADER* pProfileHeaderArray, WORD* pHeightProfileArray, WORD* pLuminanceProfileArray);
+	LJX8_IF_API LONG WINAPI LJX8IF_GetBatchSimpleArray(LONG lDeviceId, LJX8IF_GET_BATCH_PROFILE_REQUEST *pReq, LJX8IF_GET_BATCH_PROFILE_RESPONSE *pRsp, LJX8IF_PROFILE_INFO *pProfileInfo, LJX8IF_PROFILE_HEADER *pProfileHeaderArray, WORD *pHeightProfileArray, WORD *pLuminanceProfileArray);
 
 	// High-speed data communication related
 	/**
@@ -499,8 +508,12 @@ extern "C"
 	@param dwThreadId线程ID。
 	@return 返回码
 	*/
-	LJX8_IF_API LONG WINAPI LJX8IF_InitializeHighSpeedDataCommunication(LONG lDeviceId, LJX8IF_ETHERNET_CONFIG* pEthernetConfig, WORD wHighSpeedPortNo,
-		LJX8IF_CALLBACK pCallBack, DWORD dwProfileCount, DWORD dwThreadId);
+	LJX8_IF_API LONG WINAPI LJX8IF_InitializeHighSpeedDataCommunication(LONG lDeviceId,
+																		LJX8IF_ETHERNET_CONFIG *pEthernetConfig,
+																		WORD wHighSpeedPortNo,
+																		LJX8IF_CALLBACK pCallBack,
+																		DWORD dwProfileCount,
+																		DWORD dwThreadId);
 
 	/**
 	初始化以太网高速数据通信以实现简单阵列
@@ -512,8 +525,12 @@ extern "C"
 	@param dwThreadId线程ID。
 	@return返回码
 	*/
-	LJX8_IF_API LONG WINAPI LJX8IF_InitializeHighSpeedDataCommunicationSimpleArray(LONG lDeviceId, LJX8IF_ETHERNET_CONFIG* pEthernetConfig, WORD wHighSpeedPortNo,
-		LJX8IF_CALLBACK_SIMPLE_ARRAY pCallBackSimpleArray, DWORD dwProfileCount, DWORD dwThreadId);
+	LJX8_IF_API LONG WINAPI LJX8IF_InitializeHighSpeedDataCommunicationSimpleArray(LONG lDeviceId,
+																				   LJX8IF_ETHERNET_CONFIG *pEthernetConfig,
+																				   WORD wHighSpeedPortNo,
+																				   LJX8IF_CALLBACK_SIMPLE_ARRAY pCallBackSimpleArray,
+																				   DWORD dwProfileCount,
+																				   DWORD dwThreadId);
 
 	/**
 	开始高速数据通信之前要求准备
@@ -522,7 +539,7 @@ extern "C"
 	@param pProfileInfo存储配置文件信息。
 	@return返回码
 	*/
-	LJX8_IF_API LONG WINAPI LJX8IF_PreStartHighSpeedDataCommunication(LONG lDeviceId, LJX8IF_HIGH_SPEED_PRE_START_REQ* pReq, LJX8IF_PROFILE_INFO* pProfileInfo);
+	LJX8_IF_API LONG WINAPI LJX8IF_PreStartHighSpeedDataCommunication(LONG lDeviceId, LJX8IF_HIGH_SPEED_PRE_START_REQ *pReq, LJX8IF_PROFILE_INFO *pProfileInfo);
 
 	/**
 	开始高速数据通讯
@@ -544,7 +561,5 @@ extern "C"
 	@return	Return code
 	*/
 	LJX8_IF_API LONG WINAPI LJX8IF_FinalizeHighSpeedDataCommunication(LONG lDeviceId);
-
-
 };
 #pragma managed(pop)

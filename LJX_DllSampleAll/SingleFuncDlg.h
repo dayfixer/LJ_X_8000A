@@ -16,21 +16,24 @@ class CSingleFuncDlg : public CDialog
 	DECLARE_DYNAMIC(CSingleFuncDlg)
 
 public:
-	CSingleFuncDlg(CWnd* pParent = NULL);
+	CSingleFuncDlg(CWnd *pParent = NULL);
 	virtual ~CSingleFuncDlg();
 
-// Dialogue Data
-	enum { IDD = IDD_SINGLEFUNCDLG };
+	// Dialogue Data
+	enum
+	{
+		IDD = IDD_SINGLEFUNCDLG
+	};
 
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);
+	virtual void DoDataExchange(CDataExchange *pDX);
 	DECLARE_MESSAGE_MAP()
-	
+
 private:
 	// DDX variable
 	CEdit m_txtCommandLog;									// 用于命令日志的EditBox
-	CStatic m_sttConnectionStatus[LJX8IF_GUI_DEVICE_COUNT];	// 状态标签
-	CButton m_btnDeviceState;								// 设备状态的单选按钮 
+	CStatic m_sttConnectionStatus[LJX8IF_GUI_DEVICE_COUNT]; // 状态标签
+	CButton m_btnDeviceState;								// 设备状态的单选按钮
 	CComboBox m_cmbXRange;									// X（范围）系列的组合框
 	CComboBox m_cmbXThinning;								// X压缩的组合框
 	CString m_strSpinStartTimer;							// 启动计时器的旋转控制（CString）
@@ -46,7 +49,7 @@ private:
 	CComboBox m_cmbLjvMeasureX;								// LJ-V测量X的组合框
 	CComboBox m_cmbLjvBinning;								// 用于LJ-V分箱的组合框 Combo Box for LJ-V Binning
 	CComboBox m_cmbLjvThinning;								// 用于LJ-V稀疏的组合框 Combo Box for LJ-V Thinning
-	CStatic m_sttBufferSizeValue;							// 缓冲区大小的标签 
+	CStatic m_sttBufferSizeValue;							// 缓冲区大小的标签
 
 	int m_nCurrentDeviceID;
 	int m_nXRange;
@@ -62,7 +65,9 @@ private:
 	BOOL m_bIsStartTimer;
 	CString m_strCommandLog;
 	int m_anProfReceiveCount[LJX8IF_GUI_DEVICE_COUNT];
+	
 	static CDeviceData m_aDeviceData[LJX8IF_GUI_DEVICE_COUNT];
+	
 	static LJX8IF_PROFILE_INFO m_aProfileInfo[];
 	static BOOL m_bIsBufferFull[];
 	static BOOL m_bIsStopCommunicationByError[];
@@ -71,21 +76,21 @@ private:
 
 	// Storage structure (storage status)
 	// 仓储结构（仓储对象）
-	static const int STORAGE_INFO_STATUS_EMPTY    = 0;
-	static const int STORAGE_INFO_STATUS_STORING  = 1;
+	static const int STORAGE_INFO_STATUS_EMPTY = 0;
+	static const int STORAGE_INFO_STATUS_STORING = 1;
 	static const int STORAGE_INFO_STATUS_FINISHED = 2;
 
 	// Storage structure (storage target)
 	// 仓储结构（仓储对象）
-	static const int STORAGE_INFO_TARGET_DATA    = 0;
+	static const int STORAGE_INFO_TARGET_DATA = 0;
 	static const int STORAGE_INFO_TARGET_PROFILE = 2;
-	static const int STORAGE_INFO_TARGET_BATCH   = 3;
-	
+	static const int STORAGE_INFO_TARGET_BATCH = 3;
+
 	// Maximum Communication Data Size
 	// 最大通讯数据量大小
 	static const DWORD LJX8IFEX_MAXIMUM_READ_DATA_SIZE = 1024 * 1024;
 
-	static const int TIMER_ID    = 100;
+	static const int TIMER_ID = 100;
 	static const int TIMER_ELASP = 200;
 	static const int BUFFER_FULL_TIMER_ID = 300;
 
@@ -111,7 +116,7 @@ private:
 	static const int LJX_THINNING_OFF_INDEX = 0;
 	static const int LJX_THINNING_2_INDEX = 1;
 
-	//Profile data count lower limmit 
+	//Profile data count lower limmit
 	//配置文件数据计数下限
 	static const int PROFILE_DATA_MIN_COUNT = 200;
 
@@ -133,22 +138,22 @@ private:
 
 	typedef enum
 	{
-		SENDCOMMAND_NONE,												// 发送空 None
-		SENDCOMMAND_REBOOT_CONTROLLER,									// 发送重启 Restart
-		SENDCOMMAND_TRIGGER,											// 发送触发 Trigger
-		SENDCOMMAND_START_MEASURE,										// 发送开始测量 Start measurement
-		SENDCOMMAND_STOP_MEASURE,										// 发送停止测量 Stop measurement
-		SENDCOMMAND_GET_PROFILE,										// 发送获取轮廓数据 Get profiles
-		SENDCOMMAND_GET_BATCH_PROFILE,									// 发送获取批次配置文件 Get batch profiles
-		SENDCOMMAND_REQUEST_STORAGE,									// 发送手动存储请求 Manual storage request
-		SENDCOMMAND_INITIALIZE_HIGH_SPEED_DATA_ETHERNET_COMMUNICATION,	// 发送初始化以太网高速数据通信 Initialize Ethernet high-speed data communication
-		SENDCOMMAND_PRE_START_HIGH_SPEED_DATA_COMMUNICATION,			// 发送开始高速数据通信之前要求准备 Request preparation before starting high-speed data communication
-		SENDCOMMAND_START_HIGH_SPEED_DATA_COMMUNICATION,				// 发送开始高速数据通讯 Start high-speed data communication
-	} SENDCOMMAND; 
+		SENDCOMMAND_NONE,											   // 发送空 None
+		SENDCOMMAND_REBOOT_CONTROLLER,								   // 发送重启 Restart
+		SENDCOMMAND_TRIGGER,										   // 发送触发 Trigger
+		SENDCOMMAND_START_MEASURE,									   // 发送开始测量 Start measurement
+		SENDCOMMAND_STOP_MEASURE,									   // 发送停止测量 Stop measurement
+		SENDCOMMAND_GET_PROFILE,									   // 发送获取轮廓数据 Get profiles
+		SENDCOMMAND_GET_BATCH_PROFILE,								   // 发送获取批次配置文件 Get batch profiles
+		SENDCOMMAND_REQUEST_STORAGE,								   // 发送手动存储请求 Manual storage request
+		SENDCOMMAND_INITIALIZE_HIGH_SPEED_DATA_ETHERNET_COMMUNICATION, // 发送初始化以太网高速数据通信 Initialize Ethernet high-speed data communication
+		SENDCOMMAND_PRE_START_HIGH_SPEED_DATA_COMMUNICATION,		   // 发送开始高速数据通信之前要求准备 Request preparation before starting high-speed data communication
+		SENDCOMMAND_START_HIGH_SPEED_DATA_COMMUNICATION,			   // 发送开始高速数据通讯 Start high-speed data communication
+	} SENDCOMMAND;
 	SENDCOMMAND m_sendCommand; //发送命令
 
 	BOOL OnInitDialog();
-	BOOL PreTranslateMessage(MSG* pMsg);
+	BOOL PreTranslateMessage(MSG *pMsg);
 	void DisplayCommandLog(LONG lRc, int commandID);
 	void AddLog(int nDisplayFormat, LONG lRc);
 	void AddLog(int nDisplayFormat, CString strErrorMessage);
@@ -186,10 +191,19 @@ private:
 	void AnalyzeProfileData(BYTE byGetProfileCount, LJX8IF_PROFILE_INFO profileInfo, vector<int> profileData);
 	void ExportProfile();
 	BOOL GetIsLuminanceOutput(LJX8IF_PROFILE_INFO profileInfo);
-	static void ReceiveHighSpeedData(BYTE* pBuffer, DWORD dwSize, DWORD dwCount, DWORD dwNotify, DWORD dwUser);
-	static void CountProfileReceive(BYTE* pBuffer, DWORD dwSize, DWORD dwCount, DWORD dwNotify, DWORD dwUser);
-	static void ReceiveHighSpeedSimpleArray(LJX8IF_PROFILE_HEADER* pProfileHeaderArray, WORD* pHeightProfileArray, WORD* pLuminanceProfileArray, DWORD dwLuminanceEnable, DWORD dwProfileDataCount, DWORD dwCount, DWORD dwNotify, DWORD dwUser);
-	static void CountSimpleArrayReceive(LJX8IF_PROFILE_HEADER* pProfileHeaderArray, WORD* pHeightProfileArray, WORD* pLuminanceProfileArray, DWORD dwLuminanceEnable, DWORD dwProfileDataCount, DWORD dwCount, DWORD dwNotify, DWORD dwUser);
+	static void ReceiveHighSpeedData(BYTE *pBuffer, DWORD dwSize, DWORD dwCount, DWORD dwNotify, DWORD dwUser);
+	static void CountProfileReceive(BYTE *pBuffer, DWORD dwSize, DWORD dwCount, DWORD dwNotify, DWORD dwUser);
+	
+	static void ReceiveHighSpeedSimpleArray(LJX8IF_PROFILE_HEADER *pProfileHeaderArray,
+											WORD *pHeightProfileArray,
+											WORD *pLuminanceProfileArray,
+											DWORD dwLuminanceEnable,
+											DWORD dwProfileDataCount,
+											DWORD dwCount,
+											DWORD dwNotify,
+											DWORD dwUser);
+
+	static void CountSimpleArrayReceive(LJX8IF_PROFILE_HEADER *pProfileHeaderArray, WORD *pHeightProfileArray, WORD *pLuminanceProfileArray, DWORD dwLuminanceEnable, DWORD dwProfileDataCount, DWORD dwCount, DWORD dwNotify, DWORD dwUser);
 	void ClearAllHighspeedBuffer(int nDeviceId);
 
 	void UpdateBufferSizeText();
@@ -263,6 +277,7 @@ private:
 	afx_msg void OnEnKillfocusEditStarttimer();
 	afx_msg void OnEnKillfocusEditProfileindex();
 	afx_msg void OnEnKillfocusEditProfilecount();
+
 public:
 	afx_msg void OnBnClickedButFlowwork();
 	BOOL ClearMark = 0;
